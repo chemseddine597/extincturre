@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>باقة السلامة للمركبات | اطلب الآن - توصيل لجميع الولايات</title>
+<meta name="description" content="باقة السلامة للمركبات: طفاية حريق، مثلث تحذير، سترة عاكسة. مطابقة لقانون المرور الجديد. اطلب الآن بسعر 3900 دج مع توصيل سريع لكل الولايات.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181f;
+    --ink-soft:#4b5160;
+    --paper:#ffffff;
+    --bg-soft:#f4f5f7;
+    --red:#c81e1e;
+    --red-dark:#8a1414;
+    --amber:#ffc400;
+    --amber-dark:#c99400;
+    --line:#e6e7eb;
+    --radius:16px;
+    --shadow-sm: 0 2px 10px rgba(20,24,31,0.06);
+    --shadow-md: 0 10px 30px rgba(20,24,31,0.10);
+    --shadow-lg: 0 20px 50px rgba(20,24,31,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic', Tahoma, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+  }
+  img{max-width:100%; display:block;}
+  button{font-family:inherit;}
+
+  /* ---------- Hero image ---------- */
+  .hero-wrap{
+    width:100%;
+    background:var(--paper);
+    display:flex;
+    justify-content:center;
+    padding:0;
+  }
+  .hero-wrap img{
+    width:100%;
+    max-width:1000px;
+    height:auto;
+    image-rendering:auto;
+  }
+
+  /* ---------- Order section ---------- */
+  .order-section{
+    background:var(--bg-soft);
+    padding:56px 16px 40px;
+  }
+  .order-inner{
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .order-eyebrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    color:var(--red);
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.5px;
+    margin-bottom:10px;
+  }
+  .order-eyebrow .dot{
+    width:8px;height:8px;border-radius:50%;background:var(--red);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(200,30,30,.45);}
+    70%{box-shadow:0 0 0 10px rgba(200,30,30,0);}
+    100%{box-shadow:0 0 0 0 rgba(200,30,30,0);}
+  }
+  .order-title{
+    text-align:center;
+    font-size:clamp(28px,5vw,42px);
+    font-weight:900;
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .order-sub{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:15px;
+    margin:0 0 36px;
+  }
+
+  .order-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  @media (max-width:820px){
+    .order-grid{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--paper);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);
+    padding:24px;
+  }
+
+  .field{
+    margin-bottom:18px;
+  }
+  .field label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .field label .req{color:var(--red); margin-inline-start:2px;}
+  .field label .hint{color:var(--ink-soft); font-weight:500; font-size:12.5px; margin-inline-start:6px;}
+  .field input[type="text"],
+  .field input[type="tel"],
+  .field select,
+  .field textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1.5px solid var(--line);
+    border-radius:11px;
+    font-size:15px;
+    font-family:inherit;
+    color:var(--ink);
+    background:var(--paper);
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus{
+    outline:none;
+    border-color:var(--red);
+    box-shadow:0 0 0 3px rgba(200,30,30,0.12);
+  }
+  .field textarea{resize:vertical; min-height:80px;}
+  .field.error input,
+  .field.error select{
+    border-color:var(--red);
+    background:#fff6f6;
+  }
+  .error-msg{
+    display:none;
+    color:var(--red);
+    font-size:13px;
+    margin-top:6px;
+    font-weight:600;
+  }
+  .field.error .error-msg{display:block;}
+
+  .row-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media (max-width:520px){
+    .row-2{grid-template-columns:1fr;}
+  }
+
+  /* quantity stepper */
+  .qty-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border:1.5px solid var(--line);
+    border-radius:11px;
+    overflow:hidden;
+    max-width:180px;
+  }
+  .qty-box button{
+    width:44px;height:46px;
+    background:var(--bg-soft);
+    border:none;
+    font-size:20px;
+    font-weight:700;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .qty-box button:hover{background:#ebedf0;}
+  .qty-box input{
+    border:none;
+    width:60px;
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+    -moz-appearance:textfield;
+  }
+  .qty-box input::-webkit-outer-spin-button,
+  .qty-box input::-webkit-inner-spin-button{
+    -webkit-appearance:none; margin:0;
+  }
+
+  /* delivery method toggle */
+  .delivery-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  @media (max-width:520px){
+    .delivery-options{grid-template-columns:1fr;}
+  }
+  .delivery-card{
+    position:relative;
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:border-color .15s ease, background .15s ease, opacity .15s ease;
+    font-weight:600;
+    font-size:14px;
+  }
+  .delivery-card input{position:absolute; opacity:0; inset:0; margin:0; cursor:pointer;}
+  .delivery-card .icon{font-size:20px;}
+  .delivery-card.selected{
+    border-color:var(--red);
+    background:#fff5f5;
+  }
+  .delivery-card.disabled{
+    opacity:.45;
+    cursor:not-allowed;
+    background:var(--bg-soft);
+  }
+  .delivery-card.disabled input{cursor:not-allowed;}
+  .delivery-card .price-tag{
+    margin-inline-start:auto;
+    font-size:12px;
+    color:var(--ink-soft);
+    font-weight:600;
+    white-space:nowrap;
+  }
+
+  /* summary box */
+  .summary-card{
+    position:sticky;
+    top:16px;
+  }
+  .summary-title{
+    font-weight:800;
+    font-size:18px;
+    margin:0 0 16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .summary-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    border-bottom:1px dashed var(--line);
+  }
+  .summary-row span:last-child{
+    color:var(--ink);
+    font-weight:600;
+  }
+  .summary-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:16px;
+    margin-top:6px;
+    font-size:18px;
+    font-weight:800;
+    color:var(--ink);
+  }
+  .summary-total span:last-child{
+    color:var(--red);
+    font-size:22px;
+  }
+
+  .confirm-btn{
+    width:100%;
+    margin-top:20px;
+    background:linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+    color:#fff;
+    border:none;
+    padding:17px 20px;
+    font-size:17px;
+    font-weight:800;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:var(--shadow-md);
+    transition:transform .12s ease, box-shadow .12s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .confirm-btn:hover{transform:translateY(-2px); box-shadow:var(--shadow-lg);}
+  .confirm-btn:active{transform:translateY(0);}
+  .confirm-btn:disabled{opacity:.7; cursor:not-allowed; transform:none;}
+
+  .badge-strip{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:14px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  /* sticky mobile bar */
+  .sticky-bar{
+    position:fixed;
+    inset-inline:0;
+    bottom:0;
+    z-index:50;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    box-shadow:0 -6px 20px rgba(0,0,0,.08);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    display:none;
+    align-items:center;
+    gap:12px;
+  }
+  .sticky-bar .sb-total{
+    font-weight:800;
+    font-size:15px;
+    white-space:nowrap;
+  }
+  .sticky-bar .sb-total small{
+    display:block;
+    font-weight:500;
+    color:var(--ink-soft);
+    font-size:11px;
+  }
+  .sticky-bar .confirm-btn{margin-top:0;}
+  @media (max-width:820px){
+    .sticky-bar{display:flex;}
+    .order-section{padding-bottom:100px;}
+    .summary-card .confirm-btn{display:none;}
+  }
+
+  /* success overlay */
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,24,31,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .success-card{
+    background:var(--paper);
+    border-radius:20px;
+    padding:36px 28px;
+    max-width:380px;
+    width:100%;
+    text-align:center;
+    box-shadow:var(--shadow-lg);
+    animation:pop .25s ease;
+  }
+  @keyframes pop{
+    from{transform:scale(.92); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+  }
+  .success-icon{
+    width:64px;height:64px;
+    background:#eafbea;
+    color:#1e9e46;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:32px;
+    margin:0 auto 18px;
+  }
+  .success-card h3{
+    margin:0 0 10px;
+    font-size:19px;
+    font-weight:800;
+  }
+  .success-card p{
+    margin:0 0 22px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    line-height:1.7;
+  }
+  .success-card button{
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:14.5px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  .footer-note{
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    padding:24px 16px 40px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Hero landing page image, shown exactly as-is -->
+  <div class="hero-wrap">
+    <img src="safety-kit.png" alt="باقة السلامة للمركبات - طفاية حريق، مثلث تحذير، سترة عاكسة" loading="lazy" width="864" height="1682">
+  </div>
+
+  <!-- Order section -->
+  <section class="order-section" id="order">
+    <div class="order-inner">
+      <div class="order-eyebrow"><span class="dot"></span> العرض متاح لفترة محدودة</div>
+      <h2 class="order-title">اطلب الآن</h2>
+      <p class="order-sub">املأ البيانات وسنتواصل معك لتأكيد الطلب والتوصيل إلى بابك</p>
+
+      <form id="orderForm" novalidate>
+        <div class="order-grid">
+
+          <!-- form fields -->
+          <div class="card">
+
+            <div class="field" id="f-name">
+              <label for="fullName">الاسم الكامل <span class="req">*</span></label>
+              <input type="text" id="fullName" name="fullName" placeholder="مثال: أحمد بن علي" autocomplete="name">
+              <div class="error-msg">الرجاء إدخال الاسم الكامل (3 أحرف على الأقل)</div>
+            </div>
+
+            <div class="field" id="f-phone">
+              <label for="phone">رقم الهاتف <span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="05XXXXXXXX" autocomplete="tel" inputmode="numeric">
+              <div class="error-msg">الرجاء إدخال رقم هاتف جزائري صحيح (يبدأ بـ 05 أو 06 أو 07)</div>
+            </div>
+
+            <div class="row-2">
+              <div class="field" id="f-wilaya">
+                <label for="wilaya">الولاية <span class="req">*</span></label>
+                <select id="wilaya" name="wilaya">
+                  <option value="">اختر الولاية</option>
+                </select>
+                <div class="error-msg">الرجاء اختيار الولاية</div>
+              </div>
+              <div class="field" id="f-commune">
+                <label for="commune">البلدية <span class="req">*</span></label>
+                <input type="text" id="commune" name="commune" placeholder="اكتب اسم البلدية">
+                <div class="error-msg">الرجاء إدخال اسم البلدية</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>الكمية</label>
+              <div class="qty-box">
+                <button type="button" id="qtyPlus" aria-label="زيادة الكمية">+</button>
+                <input type="number" id="qty" value="1" min="1" max="10" readonly>
+                <button type="button" id="qtyMinus" aria-label="إنقاص الكمية">−</button>
+              </div>
+            </div>
+
+            <div class="field" id="f-delivery">
+              <label>طريقة التوصيل <span class="req">*</span></label>
+              <div class="delivery-options">
+                <label class="delivery-card selected" id="dcHome">
+                  <input type="radio" name="delivery" value="home" checked>
+                  <span class="icon">🚚</span>
+                  <span>التوصيل إلى المنزل</span>
+                  <span class="price-tag" id="homeFeeLabel">اختر الولاية</span>
+                </label>
+                <label class="delivery-card" id="dcOffice">
+                  <input type="radio" name="delivery" value="office">
+                  <span class="icon">🏢</span>
+                  <span>الاستلام من المكتب</span>
+                  <span class="price-tag" id="officeFeeLabel">اختر الولاية</span>
+                </label>
+              </div>
+              <div class="error-msg">التوصيل غير متوفر حاليًا لهذه الولاية بالطريقة المختارة</div>
+            </div>
+
+            <div class="field" style="margin-bottom:0;">
+              <label for="notes">ملاحظات (اختياري)</label>
+              <textarea id="notes" name="notes" placeholder="أي تفاصيل إضافية تودّ إخبارنا بها..."></textarea>
+            </div>
+
+          </div>
+
+          <!-- summary -->
+          <div class="card summary-card">
+            <div class="summary-title">🧾 ملخص الطلب</div>
+            <div class="summary-row"><span>سعر المنتج</span><span id="sumProduct">3,900 دج</span></div>
+            <div class="summary-row"><span>الكمية</span><span id="sumQty">1</span></div>
+            <div class="summary-row"><span>سعر التوصيل</span><span id="sumDelivery">اختر الولاية</span></div>
+            <div class="summary-total"><span>المجموع النهائي</span><span id="sumTotal">3,900 دج</span></div>
+
+            <button type="submit" class="confirm-btn" id="confirmBtn">
+              ✅ تأكيد الطلب
+            </button>
+            <div class="badge-strip">🔒 الدفع عند الاستلام · توصيل عبر ZR Express · جودة مضمونة 100%</div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="footer-note">© 2026 باقة السلامة للمركبات — جميع الحقوق محفوظة</div>
+
+  <!-- sticky mobile confirm bar -->
+  <div class="sticky-bar">
+    <div class="sb-total">
+      <small>المجموع</small>
+      <span id="stickyTotal">3,900 دج</span>
+    </div>
+    <button type="button" class="confirm-btn" id="stickyConfirmBtn" style="flex:1;">✅ تأكيد الطلب</button>
+  </div>
+
+  <!-- success overlay -->
+  <div class="overlay" id="successOverlay">
+    <div class="success-card">
+      <div class="success-icon">✓</div>
+      <h3>تم استلام طلبك بنجاح</h3>
+      <p>✅ تم استلام طلبك بنجاح، وسيتم التواصل معك قريبًا لتأكيد الطلب.</p>
+      <button type="button" id="closeOverlay">حسنًا</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------- Data: wilayas (official ZR Express numbering + delivery fees) ----------------
+  // fee = null means "غير متوفر" (not available) for that method in that wilaya
+  var DATA = [
+    {c:"01", n:"أدرار", home:1350, office:770},
+    {c:"02", n:"الشلف", home:1050, office:570},
+    {c:"03", n:"الأغواط", home:1050, office:570},
+    {c:"04", n:"أم البواقي", home:900, office:570},
+    {c:"05", n:"باتنة", home:850, office:570},
+    {c:"06", n:"بجاية", home:900, office:570},
+    {c:"07", n:"بسكرة", home:850, office:570},
+    {c:"08", n:"بشار", home:1350, office:570},
+    {c:"09", n:"البليدة", home:950, office:570},
+    {c:"10", n:"البويرة", home:950, office:570},
+    {c:"11", n:"تمنراست", home:1450, office:870},
+    {c:"12", n:"تبسة", home:850, office:570},
+    {c:"13", n:"تلمسان", home:1050, office:570},
+    {c:"14", n:"تيارت", home:1050, office:570},
+    {c:"15", n:"تيزي وزو", home:950, office:570},
+    {c:"16", n:"الجزائر", home:750, office:570},
+    {c:"17", n:"الجلفة", home:1050, office:570},
+    {c:"18", n:"جيجل", home:900, office:570},
+    {c:"19", n:"سطيف", home:900, office:570},
+    {c:"20", n:"سعيدة", home:1050, office:620},
+    {c:"21", n:"سكيكدة", home:900, office:570},
+    {c:"22", n:"سيدي بلعباس", home:1050, office:570},
+    {c:"23", n:"عنابة", home:900, office:570},
+    {c:"24", n:"قالمة", home:900, office:570},
+    {c:"25", n:"قسنطينة", home:900, office:570},
+    {c:"26", n:"المدية", home:950, office:570},
+    {c:"27", n:"مستغانم", home:1050, office:570},
+    {c:"28", n:"المسيلة", home:950, office:570},
+    {c:"29", n:"معسكر", home:1050, office:570},
+    {c:"30", n:"ورقلة", home:950, office:570},
+    {c:"31", n:"وهران", home:1050, office:570},
+    {c:"32", n:"البيض", home:1350, office:670},
+    {c:"33", n:"إيليزي", home:null, office:null},
+    {c:"34", n:"برج بوعريريج", home:900, office:570},
+    {c:"35", n:"بومرداس", home:950, office:520},
+    {c:"36", n:"الطارف", home:900, office:570},
+    {c:"37", n:"تندوف", home:null, office:null},
+    {c:"38", n:"تيسمسيلت", home:1050, office:570},
+    {c:"39", n:"الوادي", home:850, office:570},
+    {c:"40", n:"خنشلة", home:850, office:570},
+    {c:"41", n:"سوق أهراس", home:900, office:570},
+    {c:"42", n:"تيبازة", home:950, office:570},
+    {c:"43", n:"ميلة", home:900, office:570},
+    {c:"44", n:"عين الدفلى", home:1050, office:570},
+    {c:"45", n:"النعامة", home:1350, office:670},
+    {c:"46", n:"عين تموشنت", home:1050, office:570},
+    {c:"47", n:"غرداية", home:1050, office:570},
+    {c:"48", n:"غليزان", home:1050, office:570},
+    {c:"49", n:"تيميمون", home:1350, office:770},
+    {c:"50", n:"برج باجي مختار", home:null, office:null},
+    {c:"51", n:"أولاد جلال", home:850, office:570},
+    {c:"52", n:"بني عباس", home:1250, office:770},
+    {c:"53", n:"عين صالح", home:1550, office:null},
+    {c:"54", n:"إن قزام", home:1550, office:null},
+    {c:"55", n:"توقرت", home:500, office:420},
+    {c:"56", n:"جانت", home:null, office:null},
+    {c:"57", n:"المغير", home:850, office:null},
+    {c:"58", n:"المنيعة", home:1150, office:null}
+  ];
+
+  var PRODUCT_PRICE = 3900;
+  var GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby7yfG8487XidNBssMZGZzfTdvYRXjurx7HabX16ANdvGgcKj0GgjBkfHFlRFLkU7A5Og/exec";
+
+  var els = {
+    wilaya: document.getElementById("wilaya"),
+    commune: document.getElementById("commune"),
+    qty: document.getElementById("qty"),
+    qtyPlus: document.getElementById("qtyPlus"),
+    qtyMinus: document.getElementById("qtyMinus"),
+    fullName: document.getElementById("fullName"),
+    phone: document.getElementById("phone"),
+    notes: document.getElementById("notes"),
+    form: document.getElementById("orderForm"),
+    dcHome: document.getElementById("dcHome"),
+    dcOffice: document.getElementById("dcOffice"),
+    homeRadio: document.querySelector('input[name="delivery"][value="home"]'),
+    officeRadio: document.querySelector('input[name="delivery"][value="office"]'),
+    homeFeeLabel: document.getElementById("homeFeeLabel"),
+    officeFeeLabel: document.getElementById("officeFeeLabel"),
+    sumProduct: document.getElementById("sumProduct"),
+    sumQty: document.getElementById("sumQty"),
+    sumDelivery: document.getElementById("sumDelivery"),
+    sumTotal: document.getElementById("sumTotal"),
+    stickyTotal: document.getElementById("stickyTotal"),
+    confirmBtn: document.getElementById("confirmBtn"),
+    stickyConfirmBtn: document.getElementById("stickyConfirmBtn"),
+    overlay: document.getElementById("successOverlay"),
+    closeOverlay: document.getElementById("closeOverlay")
+  };
+
+  function fmt(n){
+    return n.toLocaleString("en-US") + " دج";
+  }
+
+  // populate wilayas
+  DATA.forEach(function(w){
+    var opt = document.createElement("option");
+    opt.value = w.c;
+    opt.textContent = w.c + " - " + w.n;
+    els.wilaya.appendChild(opt);
+  });
+
+  function getSelectedWilaya(){
+    var code = els.wilaya.value;
+    if(!code) return null;
+    for(var i=0;i<DATA.length;i++){ if(DATA[i].c === code) return DATA[i]; }
+    return null;
+  }
+
+  function currentDeliveryMethod(){
+    var checked = document.querySelector('input[name="delivery"]:checked');
+    return checked ? checked.value : "home";
+  }
+
+  function refreshDeliveryAvailability(){
+    var w = getSelectedWilaya();
+
+    if(!w){
+      els.homeFeeLabel.textContent = "اختر الولاية";
+      els.officeFeeLabel.textContent = "اختر الولاية";
+      els.homeRadio.disabled = false;
+      els.officeRadio.disabled = false;
+      els.dcHome.classList.remove("disabled");
+      els.dcOffice.classList.remove("disabled");
+      return;
+    }
+
+    // Home
+    if(w.home === null){
+      els.homeFeeLabel.textContent = "غير متوفر";
+      els.homeRadio.disabled = true;
+      els.dcHome.classList.add("disabled");
+    } else {
+      els.homeFeeLabel.textContent = fmt(w.home);
+      els.homeRadio.disabled = false;
+      els.dcHome.classList.remove("disabled");
+    }
+
+    // Office
+    if(w.office === null){
+      els.officeFeeLabel.textContent = "غير متوفر";
+      els.officeRadio.disabled = true;
+      els.dcOffice.classList.add("disabled");
+    } else {
+      els.officeFeeLabel.textContent = fmt(w.office);
+      els.officeRadio.disabled = false;
+      els.dcOffice.classList.remove("disabled");
+    }
+
+    // if the currently selected method just became unavailable, switch to the available one
+    if(currentDeliveryMethod() === "home" && w.home === null && w.office !== null){
+      els.officeRadio.checked = true;
+    } else if(currentDeliveryMethod() === "office" && w.office === null && w.home !== null){
+      els.homeRadio.checked = true;
+    }
+  }
+
+  function updateDeliveryCardStyles(){
+    els.dcHome.classList.toggle("selected", currentDeliveryMethod() === "home");
+    els.dcOffice.classList.toggle("selected", currentDeliveryMethod() === "office");
+  }
+
+  function deliveryFee(){
+    var w = getSelectedWilaya();
+    if(!w) return null;
+    var method = currentDeliveryMethod();
+    var fee = method === "office" ? w.office : w.home;
+    return fee; // number, or null if not available
+  }
+
+  function updateSummary(){
+    var qty = parseInt(els.qty.value, 10) || 1;
+    var productTotal = PRODUCT_PRICE * qty;
+    var w = getSelectedWilaya();
+
+    els.sumProduct.textContent = fmt(productTotal);
+    els.sumQty.textContent = qty;
+
+    var total;
+    if(!w){
+      els.sumDelivery.textContent = "اختر الولاية";
+      total = productTotal;
+    } else {
+      var fee = deliveryFee();
+      if(fee === null){
+        els.sumDelivery.textContent = "غير متوفر";
+        total = productTotal;
+      } else {
+        els.sumDelivery.textContent = fee === 0 ? "مجاني" : fmt(fee);
+        total = productTotal + fee;
+      }
+    }
+    els.sumTotal.textContent = fmt(total);
+    els.stickyTotal.textContent = fmt(total);
+  }
+
+  // quantity controls
+  els.qtyPlus.addEventListener("click", function(){
+    var v = parseInt(els.qty.value,10) || 1;
+    if(v < 10){ els.qty.value = v + 1; updateSummary(); }
+  });
+  els.qtyMinus.addEventListener("click", function(){
+    var v = parseInt(els.qty.value,10) || 1;
+    if(v > 1){ els.qty.value = v - 1; updateSummary(); }
+  });
+
+  els.wilaya.addEventListener("change", function(){
+    refreshDeliveryAvailability();
+    updateDeliveryCardStyles();
+    clearFieldError("f-wilaya");
+    clearFieldError("f-delivery");
+    updateSummary();
+  });
+
+  els.commune.addEventListener("input", function(){
+    if(els.commune.value.trim().length > 0) clearFieldError("f-commune");
+  });
+
+  document.querySelectorAll('input[name="delivery"]').forEach(function(r){
+    r.addEventListener("change", function(){
+      updateDeliveryCardStyles();
+      clearFieldError("f-delivery");
+      updateSummary();
+    });
+  });
+
+  refreshDeliveryAvailability();
+  updateSummary();
+
+  // ---------------- Validation ----------------
+  function setFieldError(id, show){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.classList.toggle("error", !!show);
+  }
+  function clearFieldError(id){ setFieldError(id, false); }
+
+  function validate(){
+    var valid = true;
+
+    var name = els.fullName.value.trim();
+    if(name.length < 3){ setFieldError("f-name", true); valid = false; } else { setFieldError("f-name", false); }
+
+    var phone = els.phone.value.trim();
+    var phoneRe = /^0[5-7][0-9]{8}$/;
+    if(!phoneRe.test(phone)){ setFieldError("f-phone", true); valid = false; } else { setFieldError("f-phone", false); }
+
+    if(!els.wilaya.value){ setFieldError("f-wilaya", true); valid = false; } else { setFieldError("f-wilaya", false); }
+
+    if(!els.commune.value.trim()){ setFieldError("f-commune", true); valid = false; } else { setFieldError("f-commune", false); }
+
+    var fee = deliveryFee();
+    if(els.wilaya.value && fee === null){ setFieldError("f-delivery", true); valid = false; } else { setFieldError("f-delivery", false); }
+
+    return valid;
+  }
+
+  function scrollToFirstError(){
+    var firstError = document.querySelector(".field.error");
+    if(firstError){
+      firstError.scrollIntoView({behavior:"smooth", block:"center"});
+    }
+  }
+
+  function buildOrderPayload(){
+    var w = getSelectedWilaya();
+    var qty = parseInt(els.qty.value, 10) || 1;
+    var fee = deliveryFee();
+    var productTotal = PRODUCT_PRICE * qty;
+    var total = productTotal + (fee || 0);
+    var method = currentDeliveryMethod();
+
+    return {
+      name: els.fullName.value.trim(),
+      phone: els.phone.value.trim(),
+      wilaya: w ? (w.c + " - " + w.n) : "",
+      commune: els.commune.value.trim(),
+      qty: qty,
+      delivery: method === "office" ? "الاستلام من المكتب" : "التوصيل إلى المنزل",
+      deliveryFee: fee === null ? "غير متوفر" : fee,
+      total: total,
+      notes: els.notes.value.trim()
+    };
+  }
+
+  function submitOrder(){
+    if(!validate()){
+      scrollToFirstError();
+      return;
+    }
+    els.confirmBtn.disabled = true;
+    els.stickyConfirmBtn.disabled = true;
+    els.confirmBtn.textContent = "جارٍ الإرسال...";
+    els.stickyConfirmBtn.textContent = "جارٍ الإرسال...";
+
+    var payload = buildOrderPayload();
+
+    function finish(){
+      els.overlay.classList.add("show");
+      els.confirmBtn.disabled = false;
+      els.stickyConfirmBtn.disabled = false;
+      els.confirmBtn.textContent = "✅ تأكيد الطلب";
+      els.stickyConfirmBtn.textContent = "✅ تأكيد الطلب";
+    }
+
+    if(!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL.indexOf("PASTE_") === 0){
+      // no backend configured yet, just simulate
+      setTimeout(finish, 600);
+      return;
+    }
+
+    fetch(GOOGLE_SHEET_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    })
+    .then(finish)
+    .catch(finish);
+  }
+
+  els.form.addEventListener("submit", function(e){
+    e.preventDefault();
+    submitOrder();
+  });
+  els.stickyConfirmBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    submitOrder();
+  });
+
+  els.closeOverlay.addEventListener("click", function(){
+    els.overlay.classList.remove("show");
+    els.form.reset();
+    refreshDeliveryAvailability();
+    updateDeliveryCardStyles();
+    updateSummary();
+    document.getElementById("order").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  // live-clear errors while typing
+  els.fullName.addEventListener("input", function(){ if(els.fullName.value.trim().length>=3) clearFieldError("f-name"); });
+  els.phone.addEventListener("input", function(){ if(/^0[5-7][0-9]{8}$/.test(els.phone.value.trim())) clearFieldError("f-phone"); });
+
+})();
+</script>
+</body>
+</html>
